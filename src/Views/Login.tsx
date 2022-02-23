@@ -1,34 +1,37 @@
-import React from 'react'
-import { Button, Card, Form } from 'react-bootstrap'
+import { useState } from 'react'
+import { Button, Card, Col, Form, Row } from 'react-bootstrap'
 import FormEmail from '../Components/Form/FormEmail'
+import FormPassword from '../Components/Form/FormPassword'
 
 const Login = () => {
+  const [email, setEmail] = useState<string>('')
+  
+  const [password, setPassword] = useState<string>('')
   return (
-    <>
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
-        <Card.Body>
-          <Card.Title>Login Form</Card.Title>
-
-          <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <FormEmail />
+      <Col md={12} className="justify-content-center d-flex">
+        <Card style={{ width: '25rem' }} >
+          <Card.Body>
+            <Card.Title>Login Form</Card.Title>
+            <Form>
+              <Form.Group className="mb-3">
+                <FormEmail title="Email" />
+              { email }
             </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Group className="mb-3">
+                <FormPassword title="Password" />  
+              { password }  
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
-    </>
+            <Row>
+              <Col md={12} className='justify-content-end d-flex' >
+                <Button variant="primary" type="submit"  >
+                  Submit
+                </Button>
+              </Col>
+            </Row>
+            </Form>
+          </Card.Body>
+        </Card>
+      </Col>
   )
 }
 
